@@ -106,7 +106,5 @@ CREATE TABLE tipo_reserva(
 	descripcion VARCHAR (20)
 );
 
-ALTER TABLE unidad 
-	ADD capacidad INT;
-
---PROBANDO GIT
+ALTER TABLE unidad  --NUEVO CAMPO
+	ADD capacidad INT; 
