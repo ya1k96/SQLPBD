@@ -108,3 +108,5 @@ CREATE TABLE tipo_reserva(
 
 ALTER TABLE unidad 
 	ADD capacidad INT;
+
+--PROBANDO GIT
