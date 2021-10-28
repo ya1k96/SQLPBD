@@ -86,8 +86,8 @@ ALTER TABLE unidad
 	ADD CONSTRAINT ck_disponible_field CHECK( disponible IN(1, 0) );
 
 --TIPO_RESERVA
-CREATE TABLE tipo_pago(
-	idtipo_pago INT PRIMARY KEY,
+CREATE TABLE tipo_reserva(
+	idtipo_reserva INT IDENTITY PRIMARY KEY,
 	descripcion VARCHAR (20)
 );
 --
