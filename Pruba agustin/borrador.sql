@@ -4,25 +4,25 @@ USE yosubo;
 
 --TIPO_BASE
 CREATE TABLE tipo_base (
-	idtipobase INT IDENTITY PRIMARY KEY,
+	idtipobase INT PRIMARY KEY,
 	descripcion VARCHAR(200)
 );
 
 --TIPO_USUARIO
 CREATE TABLE tipo_usuario(
-	idtipo_usuario INT IDENTITY PRIMARY KEY,
+	idtipo_usuario INT PRIMARY KEY,
 	descripcion VARCHAR (20)
 );
 
 --LOCALIDAD
 CREATE TABLE localidad(
-	idlocalidad INT IDENTITY PRIMARY KEY,
+	idlocalidad INT PRIMARY KEY,
 	descripcion VARCHAR(255)
 );
 
 --COMBI
 CREATE TABLE combi (
-	idcombi INT IDENTITY PRIMARY KEY,
+	idcombi INT PRIMARY KEY,
 	nombre VARCHAR(255),
 	idlocalidad INT,
 	CONSTRAINT FK_id_localidad FOREIGN KEY (idlocalidad) REFERENCES localidad(idlocalidad)
@@ -30,7 +30,7 @@ CREATE TABLE combi (
 
 --BASE
 CREATE TABLE base(
-	idbase INT IDENTITY PRIMARY KEY,
+	idbase INT PRIMARY KEY,
 	idtipobase INT,
 	idcombi INT,
 	direccion VARCHAR(255),
@@ -40,12 +40,12 @@ CREATE TABLE base(
 
 --MARCA
 CREATE TABLE marca(
-	idmarca INT IDENTITY PRIMARY KEY,
+	idmarca INT PRIMARY KEY,
 	descripcion VARCHAR(250),
 );
 --MODELO
 CREATE TABLE modelo(
-	idmodelo INT IDENTITY PRIMARY KEY,
+	idmodelo INT PRIMARY KEY,
 	idmarca INT,
 	descripcion VARCHAR(250),
 	anio INT, --EL ANTERIOR ESTABA CON ñ NO SE PUEDE USAR
@@ -54,7 +54,7 @@ CREATE TABLE modelo(
 
 --UNIDADES
 CREATE TABLE unidad(
-	idunidad INT IDENTITY PRIMARY KEY,
+	idunidad INT PRIMARY KEY,
 	idmodelo INT,
 	idmarcar INT,
 	disponible INT, 
@@ -63,7 +63,7 @@ CREATE TABLE unidad(
 
 --HORARIO
 CREATE TABLE horario(
-	idhorario INT IDENTITY PRIMARY KEY,
+	idhorario INT PRIMARY KEY,
 	idcombi INT,
 	hora INT,
 	destino VARCHAR(200),
@@ -73,7 +73,7 @@ CREATE TABLE horario(
 
 --SALIDA
 CREATE TABLE salida(
-	idsalida INT IDENTITY PRIMARY KEY,
+	idsalida INT PRIMARY KEY,
 	idunidad INT,
 	idhorario INT,
 	fecha DATE,
@@ -87,7 +87,7 @@ ALTER TABLE unidad
 
 --TIPO_RESERVA
 CREATE TABLE tipo_pago(
-	idtipo_pago INT IDENTITY PRIMARY KEY,
+	idtipo_pago INT PRIMARY KEY,
 	descripcion VARCHAR (20)
 );
 --
@@ -100,21 +100,16 @@ CREATE TABLE pago(
 	fecha DATE
 );
 
-CREATE TABLE pago_detalle(
-	idpago_detalle INT PRIMARY KEY,
-	subtotal DECIMAL(19,4),
-	idpago INT,
-	CONSTRAINT FK_idpago FOREIGN KEY (idpago) REFERENCES pago(idpago)
-);
 --
 --
 
 --RESERVAS
 CREATE TABLE reserva(
-	idreserva INT IDENTITY PRIMARY KEY,
+	idreserva INT PRIMARY KEY,
 	idsalida INT,
 	idtiporeserva INT,
-	idusuario INT
+	idusuario INT,
+	idpago INT
 );
 	--CREACION DE CLAVES FORANEAS
 ALTER TABLE reserva
@@ -123,10 +118,12 @@ ALTER TABLE reserva
 	ADD CONSTRAINT FK_id_tipo_reserva FOREIGN KEY (idtiporeserva) REFERENCES tipo_reserva(idtipo_reserva);
 ALTER TABLE reserva 
 	ADD CONSTRAINT FK_id_usuario FOREIGN KEY (idusuario) REFERENCES usuario(idusuario);	
+ALTER TABLE reserva 
+	ADD CONSTRAINT FK_id_pago FOREIGN KEY (idpago) REFERENCES pago(idpago);	
 
 --USUARIO
 CREATE TABLE usuario(
-	idUsuario INT IDENTITY PRIMARY KEY,
+	idUsuario INT PRIMARY KEY,
 	idTipoUsuario VARCHAR(1) NOT NULL,
 	nombre VARCHAR(100) NOT NULL,
 	correo VARCHAR(250) NOT NULL,
