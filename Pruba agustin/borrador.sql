@@ -58,7 +58,7 @@ CREATE TABLE unidad(
 	idmodelo INT,
 	idmarcar INT,
 	disponible INT, 
-  capacidad INT -- CAMPO NUEVO
+    capacidad INT -- CAMPO NUEVO
 );
 
 --HORARIO
@@ -86,10 +86,28 @@ ALTER TABLE unidad
 	ADD CONSTRAINT ck_disponible_field CHECK( disponible IN(1, 0) );
 
 --TIPO_RESERVA
-CREATE TABLE tipo_reserva(
-	idtipo_reserva INT IDENTITY PRIMARY KEY,
+CREATE TABLE tipo_pago(
+	idtipo_pago INT IDENTITY PRIMARY KEY,
 	descripcion VARCHAR (20)
 );
+--
+--		TABLAS PARA PAGOS
+--			AÑADIMOS ESTAS TABLAS PARA RESOLVER ALGUNAS INCONSISTENCIAS 
+--
+CREATE TABLE pago(
+	idpago INT PRIMARY KEY,
+	total DECIMAL(19,4),
+	fecha DATE
+);
+
+CREATE TABLE pago_detalle(
+	idpago_detalle INT PRIMARY KEY,
+	subtotal DECIMAL(19,4),
+	idpago INT,
+	CONSTRAINT FK_idpago FOREIGN KEY (idpago) REFERENCES pago(idpago)
+);
+--
+--
 
 --RESERVAS
 CREATE TABLE reserva(
