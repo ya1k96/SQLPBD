@@ -49,7 +49,7 @@ CREATE TABLE salida(
 CREATE TABLE unidad(
 	idunidad INT IDENTITY PRIMARY KEY,
 	idmodelo INT,
-	idmarcar INT,
+	idmarca INT,
 	disponible INT, 
   capacidad INT -- CAMPO NUEVO
 );
@@ -91,7 +91,7 @@ CREATE TABLE usuario(
 	nombre VARCHAR(100) NOT NULL,
 	correo VARCHAR(250) NOT NULL,
 	contras VARCHAR(50) NOT NULL,
-	CONSTRAINT CK_idTipoUsuario CHECK (idTipoUsuario in ('I', 'R')),
+	CONSTRAINT CK_idTipoUsuario CHECK (idTipoUsuario in ('I', 'F')),
 );
 
 --TIPO_USUARIO
