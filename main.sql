@@ -85,11 +85,6 @@ CREATE TABLE salida(
 ALTER TABLE unidad
 	ADD CONSTRAINT ck_disponible_field CHECK( disponible IN(1, 0) );
 
---TIPO_RESERVA
-CREATE TABLE tipo_reserva(
-	idtipo_reserva INT PRIMARY KEY,
-	descripcion VARCHAR (20)
-);
 --
 --		TABLAS PARA PAGOS
 --			AÑADIMOS ESTAS TABLAS PARA RESOLVER ALGUNAS INCONSISTENCIAS 
