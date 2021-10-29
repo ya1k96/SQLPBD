@@ -1,3 +1,14 @@
+--
+--
+--
+--
+--
+--	CODIGO DE AGUSTIN NO COPIAR
+--
+--
+--
+--
+
 --CREAMOS LA BASE DE DATOS
 CREATE DATABASE yosubo;
 USE yosubo;
@@ -10,7 +21,7 @@ CREATE TABLE tipo_base (
 
 --TIPO_USUARIO
 CREATE TABLE tipo_usuario(
-	idtipo_usuario INT PRIMARY KEY,
+	idtipousuario INT PRIMARY KEY,
 	descripcion VARCHAR (20)
 );
 
@@ -128,7 +139,7 @@ CREATE TABLE usuario(
 	nombre VARCHAR(100) NOT NULL,
 	correo VARCHAR(250) NOT NULL,
 	contras VARCHAR(50) NOT NULL,
-	CONSTRAINT CK_idTipoUsuario CHECK (idTipoUsuario in ('I', 'R')),
+	CONSTRAINT CK_idTipoUsuario CHECK (idtipousuario in ('I', 'R')),
 );
 
 --PROBANDO GIT

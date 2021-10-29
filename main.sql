@@ -85,11 +85,6 @@ CREATE TABLE salida(
 ALTER TABLE unidad
 	ADD CONSTRAINT ck_disponible_field CHECK( disponible IN(1, 0) );
 
---TIPO_RESERVA
-CREATE TABLE tipo_reserva(
-	idtipo_reserva INT IDENTITY PRIMARY KEY,
-	descripcion VARCHAR (20)
-);
 --
 --		TABLAS PARA PAGOS
 --			AÑADIMOS ESTAS TABLAS PARA RESOLVER ALGUNAS INCONSISTENCIAS 
@@ -107,15 +102,12 @@ CREATE TABLE pago(
 CREATE TABLE reserva(
 	idreserva INT PRIMARY KEY,
 	idsalida INT,
-	idtiporeserva INT,
 	idusuario INT,
 	idpago INT
 );
 	--CREACION DE CLAVES FORANEAS
 ALTER TABLE reserva
 	ADD CONSTRAINT FK_id_salida FOREIGN KEY (idsalida) REFERENCES salida(idsalida);
-ALTER TABLE reserva
-	ADD CONSTRAINT FK_id_tipo_reserva FOREIGN KEY (idtiporeserva) REFERENCES tipo_reserva(idtipo_reserva);
 ALTER TABLE reserva 
 	ADD CONSTRAINT FK_id_usuario FOREIGN KEY (idusuario) REFERENCES usuario(idusuario);	
 ALTER TABLE reserva 
@@ -124,9 +116,9 @@ ALTER TABLE reserva
 --USUARIO
 CREATE TABLE usuario(
 	idUsuario INT PRIMARY KEY,
-	idTipoUsuario VARCHAR(1) NOT NULL,
+	idTipoUsuario INT NOT NULL,
 	nombre VARCHAR(100) NOT NULL,
 	correo VARCHAR(250) NOT NULL,
 	contras VARCHAR(50) NOT NULL,
-	CONSTRAINT CK_idTipoUsuario CHECK (idTipoUsuario in ('I', 'R')),
+	CONSTRAINT CK_idTipoUsuario CHECK (idTipoUsuario in (1, 2)),
 );
