@@ -87,7 +87,7 @@ ALTER TABLE unidad
 
 --TIPO_RESERVA
 CREATE TABLE tipo_reserva(
-	idtipo_reserva INT IDENTITY PRIMARY KEY,
+	idtipo_reserva INT PRIMARY KEY,
 	descripcion VARCHAR (20)
 );
 --
