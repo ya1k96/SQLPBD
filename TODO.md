@@ -1,8 +1,9 @@
 # Tareas pendientes
 
 ## Funciones
-- **fnContarReservas**
-- **fnReservasPagadas**
+- ~~fnLugarDisponible~~
+- ~~fnContarLugares~~
+- ~~fnReservasPagadas~~
 - **fnObtenerReservasPorFecha**
 - **fnPagarReserva**
 - **fnCancelarReserva**
