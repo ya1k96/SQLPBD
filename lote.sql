@@ -68,13 +68,16 @@ INSERT INTO unidad(idunidad, idmodelo, idmarcar, disponible, capacidad, idcombi)
 --Salida 
 INSERT INTO salida (idsalida, idhorario, idunidad, fecha) VALUES
 ( 2, 2, 1, '2021-10-21'),( 3, 3, 1, '2021-10-21'),( 4, 4, 1, '2021-10-21'),
-( 5, 5, 1, '2021-10-21'),( 6, 6, 1, '2021-10-21'),( 7, 7, 1, '2021-10-21');
+( 5, 5, 1, '2021-10-21'),( 6, 6, 1, '2021-10-21'),( 7, 7, 1, '2021-10-21'),
+( 8, 7, 1, '2021-11-02'),( 9, 7, 1, '2021-11-02');
 select * from salida;
 
 --Reservas 
 INSERT INTO reserva (idreserva, idsalida, idtiporeserva, idusuario, idpago) VALUES 
 (1, 1, 1, 1, NULL),(2, 1, 1, 2, NULL),(3, 1, 1, 3, NULL),(4, 2, 1, 4, NULL),
-(5, 2, 1, 2, NULL),(6, 1, 1, 3, NULL);
+(5, 2, 1, 2, NULL),(6, 1, 1, 3, NULL),(7, 1, 1, 1, NULL),(8, 1, 1, 2, NULL),
+(9, 1, 1, 3, NULL),(10, 2, 1, 4, NULL),
+(9, 2, 1, 2, NULL),(10, 1, 1, 3, NULL);
 
 SELECT * FROM reserva;
 SELECT * FROM localidad;
@@ -86,9 +89,14 @@ SELECT * FROM tipo_usuario;
 SELECT * FROM horario;
 SELECT * FROM marca;
 SELECT * FROM combi;
-
-USE yosubo;
+SELECT * FROM salida;
 
 -- FUNCION PARA SABER SI HAY LUGAR DISPONIBLE 
--- @param idsalida: id de la salida que querramos buscar
+-- @param idsalida: 
 PRINT dbo.fnLugarDisponible(1);
+-- FUNCION PARA VER LAS RESERVAS NO PAGADAS 
+-- @param idsalida
+SELECT * FROM dbo.fnReservasPagadas(1);
+-- FUNCION PARA VER LAS SALIDAS DEL DIA
+-- @param fecha AAAA-MM-DD
+SELECT hora, origen, destino FROM dbo.fnSalidasDelDia('2021-11-02');
