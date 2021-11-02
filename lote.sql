@@ -86,3 +86,9 @@ SELECT * FROM tipo_usuario;
 SELECT * FROM horario;
 SELECT * FROM marca;
 SELECT * FROM combi;
+
+USE yosubo;
+
+-- FUNCION PARA SABER SI HAY LUGAR DISPONIBLE 
+-- @param idsalida: id de la salida que querramos buscar
+PRINT dbo.fnLugarDisponible(1);
