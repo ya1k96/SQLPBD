@@ -58,7 +58,8 @@ CREATE TABLE unidad(
 	idmodelo INT,
 	idmarcar INT,
 	disponible INT, 
-    capacidad INT -- CAMPO NUEVO
+  idcombi INT, --CAMPO NUEVO
+  capacidad INT
 );
 
 --HORARIO
@@ -95,6 +96,12 @@ CREATE TABLE pago(
 	fecha DATE
 );
 
+CREATE TABLE tipo_pago(
+	idtipopago INT,
+	descripcion VARCHAR(100),
+  ADD CONSTRAINT FK_pago_id FOREIGN KEY (idtipopago)
+  REFERENCES pago(idpago)	
+);
 --
 --
 
