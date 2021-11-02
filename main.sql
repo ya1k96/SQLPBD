@@ -14,6 +14,12 @@ CREATE TABLE tipo_usuario(
 	descripcion VARCHAR (20)
 );
 
+--TIPO_RESERVA
+CREATE TABLE tipo_reserva(
+	idtiporeserva INT PRIMARY KEY,
+	descripcion VARCHAR (20)
+);
+
 --LOCALIDAD
 CREATE TABLE localidad(
 	idlocalidad INT PRIMARY KEY,
@@ -99,7 +105,7 @@ CREATE TABLE pago(
 CREATE TABLE tipo_pago(
 	idtipopago INT,
 	descripcion VARCHAR(100),
-  ADD CONSTRAINT FK_pago_id FOREIGN KEY (idtipopago)
+  CONSTRAINT FK_pago_id FOREIGN KEY (idtipopago)
   REFERENCES pago(idpago)	
 );
 --
@@ -119,6 +125,8 @@ ALTER TABLE reserva
 	ADD CONSTRAINT FK_id_usuario FOREIGN KEY (idusuario) REFERENCES usuario(idusuario);	
 ALTER TABLE reserva 
 	ADD CONSTRAINT FK_id_pago FOREIGN KEY (idpago) REFERENCES pago(idpago);	
+ALTER TABLE reserva 
+	ADD CONSTRAINT FK_id_tipo_reserva FOREIGN KEY (idtiporeserva) REFERENCES tipo_reserva(idtiporeserva);
 
 --USUARIO
 CREATE TABLE usuario(
