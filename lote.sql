@@ -70,16 +70,39 @@ INSERT INTO salida (idsalida, idhorario, idunidad, fecha) VALUES
 ( 2, 2, 1, '2021-10-21'),( 3, 3, 1, '2021-10-21'),( 4, 4, 1, '2021-10-21'),
 ( 5, 5, 1, '2021-10-21'),( 6, 6, 1, '2021-10-21'),( 7, 7, 1, '2021-10-21'),
 ( 8, 7, 1, '2021-11-02'),( 9, 7, 1, '2021-11-02');
-select * from salida;
+select * from reserva WHERE idsalida = 2;
 
 --Reservas 
-INSERT INTO reserva (idreserva, idsalida, idtiporeserva, idusuario, idpago) VALUES 
-(1, 1, 1, 1, NULL),(2, 1, 1, 2, NULL),(3, 1, 1, 3, NULL),(4, 2, 1, 4, NULL),
-(5, 2, 1, 2, NULL),(6, 1, 1, 3, NULL),(7, 1, 1, 1, NULL),(8, 1, 1, 2, NULL),
-(9, 1, 1, 3, NULL),(10, 2, 1, 4, NULL),
-(9, 2, 1, 2, NULL),(10, 1, 1, 3, NULL);
+EXECUTE fnCrearReserva 41, 2, 1, 3, NULL;
+EXECUTE fnCrearReserva 42, 2, 1, 4, NULL;
+EXECUTE fnCrearReserva 43, 2, 1, 2, NULL;
+EXECUTE fnCrearReserva 44, 1, 1, 3, NULL;
+EXECUTE fnCrearReserva 40, 2, 1, 3, NULL;
+EXECUTE fnCrearReserva 39, 2, 1, 3, NULL;
+EXECUTE fnCrearReserva 45, 2, 1, 3, NULL;
+EXECUTE fnCrearReserva 46, 2, 1, 4, NULL;
+EXECUTE fnCrearReserva 47, 2, 1, 2, NULL;
+EXECUTE fnCrearReserva 48, 1, 1, 3, NULL;
+EXECUTE fnCrearReserva 49, 2, 1, 3, NULL;
+EXECUTE fnCrearReserva 50, 2, 1, 3, NULL;
 
-SELECT * FROM reserva;
+--VERFICAMOS LA CANTIDAD DE RESERVAS DE LA SALIDA
+SELECT COUNT(*) FROM reserva WHERE idsalida = 2;
+SELECT COUNT(*) FROM reserva WHERE idsalida = 1;
+
+DELETE reserva WHERE idreserva = 39;
+DELETE reserva WHERE idreserva = 40;
+DELETE reserva WHERE idreserva = 41;
+DELETE reserva WHERE idreserva = 42;
+DELETE reserva WHERE idreserva = 43;
+DELETE reserva WHERE idreserva = 44;
+DELETE reserva WHERE idreserva = 45;
+DELETE reserva WHERE idreserva = 46;
+DELETE reserva WHERE idreserva = 47;
+DELETE reserva WHERE idreserva = 48;
+DELETE reserva WHERE idreserva = 49;
+DELETE reserva WHERE idreserva = 50;
+
 SELECT * FROM localidad;
 SELECT * FROM tipo_reserva;
 SELECT * FROM unidad;
@@ -100,3 +123,11 @@ SELECT * FROM dbo.fnReservasPagadas(1);
 -- FUNCION PARA VER LAS SALIDAS DEL DIA
 -- @param fecha AAAA-MM-DD
 SELECT hora, origen, destino FROM dbo.fnSalidasDelDia('2021-11-02');
+
+
+--USE yosubo;
+--DROP TRIGGER TR_confirmar_reserva;
+--LOG DE USUARIOS
+--EXEC sp_who2;
+--PRUEBA PERMISOS
+--INSERT INTO reserva (idreserva, idsalida, idtiporeserva, idusuario, idpago) VALUES(90, 2, 1, 3, NULL)

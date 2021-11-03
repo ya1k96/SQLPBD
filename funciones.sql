@@ -31,3 +31,25 @@ AS
 			INNER JOIN horario ON salida.idhorario = horario.idhorario
 			WHERE fecha = @fecha)
 GO
+
+CREATE PROCEDURE fnCrearReserva(
+@idreserva INT, 
+@idsalida INT, 
+@idtiporeserva INT, 
+@idusuario INT, 
+@idpago INT)
+AS
+BEGIN
+SET NOCOUNT ON	             
+    IF (dbo.fnLugarDisponible(@idsalida) = 1) 
+	  BEGIN
+		BEGIN TRANSACTION
+			INSERT INTO reserva (idreserva, idsalida, idtiporeserva, idusuario, idpago) 
+			VALUES (@idreserva, @idsalida, @idtiporeserva, @idusuario, @idpago);        
+			COMMIT
+	  END    
+	ELSE
+	BEGIN
+		RAISERROR (1,-1,-1, 'No hay lugares disponibles')
+	END
+END

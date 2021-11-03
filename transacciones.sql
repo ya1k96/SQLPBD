@@ -9,8 +9,9 @@ CREATE PROCEDURE fn_insertar_reserva
 AS
 BEGIN --DEFINICION DE LAS INSTRUCCIONES
 BEGIN TRAN --INDICA EL PUNTO INICIAL DE LA TRANSACCION 
+
 INSERT INTO reserva ([idreserva], [idsalida], [idtiporeserva], [idusuario], [idpago]) 
-VALUES( ) 
+VALUES(@idreserva, @idsalida, @idtiporeserva, @idusuario, @idpago) 
 IF @@ERROR <> 0 GOTO verError --VERIFICA SI UN ERROR SE PRODUJO
 COMMIT TRAN  --MARCA EL FINAL DE UNA TRANSACCION QUE SE HIZO CORRECTAMENTE
 RETURN(0) 

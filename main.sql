@@ -137,3 +137,5 @@ CREATE TABLE usuario(
 	contras VARCHAR(50) NOT NULL,
 	CONSTRAINT CK_idTipoUsuario CHECK (idTipoUsuario in (1, 2)),
 );
+ALTER TABLE usuario 
+	ADD CONSTRAINT FK_id_tipo_usuario FOREIGN KEY (idTipoUsuario) REFERENCES tipo_usuario(idtipo_usuario);
