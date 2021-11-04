@@ -53,3 +53,12 @@ SET NOCOUNT ON
 		RAISERROR (1,-1,-1, 'No hay lugares disponibles')
 	END
 END
+
+CREATE FUNCTION fnObtenerReservasPorFecha (@fecha VARCHAR(30))
+RETURNS TABLE
+AS
+	RETURN (SELECT salida.idsalida, reserva.idreserva, reserva.idusuario, reserva.idpago, reserva.idtiporeserva FROM salida
+			INNER JOIN reserva ON salida.idsalida = reserva.idsalida
+			WHERE fecha = @fecha)
+GO
+

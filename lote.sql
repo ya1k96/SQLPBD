@@ -123,6 +123,9 @@ SELECT * FROM dbo.fnReservasPagadas(1);
 -- FUNCION PARA VER LAS SALIDAS DEL DIA
 -- @param fecha AAAA-MM-DD
 SELECT hora, origen, destino FROM dbo.fnSalidasDelDia('2021-11-02');
+--FUNCION PARA VER LAS RESERVAS POR FECHA
+-- @param fecha AAAA-MM-DD
+SELECT idsalida, idreserva, idusuario, idpago, idtiporeserva FROM fnObtenerReservasPorFecha('2021-10-21');
 
 
 --USE yosubo;

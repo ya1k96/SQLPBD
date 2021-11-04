@@ -4,13 +4,13 @@
 - ~~fnLugarDisponible~~
 - ~~fnContarLugares~~
 - ~~fnReservasPagadas~~
-- **fnObtenerReservasPorFecha**
+- ~~fnObtenerSalidasPorFecha~~
+- ~~fnObtenerReservasPorFecha~~
 - **fnPagarReserva**
 - **fnCancelarReserva**
 - **fnObtenerHorarioPorHora**
 - **fnObtenerHorarioPorEmpresa**
-- **fnObtenerProximasSalidas**
-- **fnObtenerSalidasPorFecha**
+
 
 ## Vistas
 - **ProximasSalidas**
