@@ -1,3 +1,4 @@
+--DESKTOP-KCOAMHS\SQLEXPRESS
 --LOTE DATOS 
 USE yosubo;
 ALTER TABLE unidad
@@ -71,7 +72,8 @@ INSERT INTO salida (idsalida, idhorario, idunidad, fecha) VALUES
 ( 5, 5, 1, '2021-10-21'),( 6, 6, 1, '2021-10-21'),( 7, 7, 1, '2021-10-21'),
 ( 8, 7, 1, '2021-11-02'),( 9, 7, 1, '2021-11-02');
 select * from reserva WHERE idsalida = 2;
-
+INSERT INTO salida (idsalida, idhorario, idunidad, fecha) VALUES
+( 16, 4, 2, '2021-11-04')
 --Reservas 
 EXECUTE fnCrearReserva 41, 2, 1, 3, NULL;
 EXECUTE fnCrearReserva 42, 2, 1, 4, NULL;
@@ -125,12 +127,21 @@ SELECT * FROM dbo.fnReservasPagadas(1);
 SELECT hora, origen, destino FROM dbo.fnSalidasDelDia('2021-11-02');
 --FUNCION PARA VER LAS RESERVAS POR FECHA
 -- @param fecha AAAA-MM-DD
-SELECT idsalida, idreserva, idusuario, idpago, idtiporeserva FROM fnObtenerReservasPorFecha('2021-10-21');
+SELECT * FROM fnObtenerReservasPorFecha('2021-11-02');
 
-
---USE yosubo;
---DROP TRIGGER TR_confirmar_reserva;
---LOG DE USUARIOS
---EXEC sp_who2;
 --PRUEBA PERMISOS
---INSERT INTO reserva (idreserva, idsalida, idtiporeserva, idusuario, idpago) VALUES(90, 2, 1, 3, NULL)
+--USE yosubo;
+--INSERT INTO reserva (idreserva, idsalida, idtiporeserva, idusuario, idpago) VALUES(90, 2, 1, 3, NULL);
+--INSERT INTO usuario (idUsuario, idTipoUsuario, nombre, correo, contras) VALUES 
+--(6, 1, 'Pablo Martinez', 'pablo@gmail.com', 'e10adc3949ba59abbe56e057f20f883e');
+
+--PRUEBA PROCEDIMIENTO ALMACENADO (CON PERMISOS)
+--EXECUTE fnCrearReserva 90, 2, 1, 3, NULL;
+
+--PRUEBA TRIGGER CAPACIDAD
+--INSERT INTO salida (idsalida, idhorario, idunidad, fecha) VALUES
+--( 17, 4, 2, '2021-11-04')
+
+--AGREGAR CAMPO
+ALTER TABLE salida
+	ADD lugares INT DEFAULT 0

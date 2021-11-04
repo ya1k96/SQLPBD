@@ -13,18 +13,15 @@ GO
 CREATE USER Uyamil FOR LOGIN yamil;
 
 ALTER ROLE db_denydatawriter ADD MEMBER Uyamil;
+ALTER ROLE db_datareader ADD MEMBER Uyamil;
 
-GRANT SELECT ON combi TO yamil
-GRANT SELECT ON dbo.reserva TO Uyamil
-GRANT SELECT ON dbo.horario TO Uyamil
-GRANT SELECT ON dbo.salida TO Uyamil
+ALTER ROLE db_denydatawriter ADD MEMBER Uagustin;
+ALTER ROLE db_datareader ADD MEMBER Uagustin;
+
 
 --FUNCIONES Y PROCEDIMIENTOS
-GRANT EXECUTE ON dbo.fnLugarDisponible TO Uyamil
-GRANT SELECT ON dbo.fnReservasPagadas TO Uyamil
-GRANT SELECT ON dbo.fnLugaresLibres TO Uyamil
-GRANT SELECT ON dbo.fnSalidasDelDia TO Uyamil
-GRANT EXECUTE ON dbo.fnCrearReserva TO Uyamil
+GRANT EXECUTE ON dbo.fnCrearReserva TO Uyamil;
+GRANT EXECUTE ON dbo.fnCrearReserva TO Uagustin;
 --USUARIO CON PERMISOS LIMITADOS
 
 

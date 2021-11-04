@@ -39,26 +39,29 @@ CREATE PROCEDURE fnCrearReserva(
 @idusuario INT, 
 @idpago INT)
 AS
-BEGIN
-SET NOCOUNT ON	             
-    IF (dbo.fnLugarDisponible(@idsalida) = 1) 
+BEGIN TRANSACTION 
+BEGIN 
+	IF (dbo.fnLugarDisponible(@idsalida) = 1) 
 	  BEGIN
-		BEGIN TRANSACTION
 			INSERT INTO reserva (idreserva, idsalida, idtiporeserva, idusuario, idpago) 
 			VALUES (@idreserva, @idsalida, @idtiporeserva, @idusuario, @idpago);        
 			COMMIT
 	  END    
 	ELSE
 	BEGIN
-		RAISERROR (1,-1,-1, 'No hay lugares disponibles')
+		PRINT 'No hay lugares disponibles'
+		ROLLBACK
 	END
+
 END
 
 CREATE FUNCTION fnObtenerReservasPorFecha (@fecha VARCHAR(30))
 RETURNS TABLE
 AS
-	RETURN (SELECT salida.idsalida, reserva.idreserva, reserva.idusuario, reserva.idpago, reserva.idtiporeserva FROM salida
-			INNER JOIN reserva ON salida.idsalida = reserva.idsalida
-			WHERE fecha = @fecha)
+	RETURN (
+	SELECT salida.idsalida, reserva.idreserva, reserva.idusuario, reserva.idpago, reserva.idtiporeserva 
+	FROM salida
+	INNER JOIN reserva ON salida.idsalida = reserva.idsalida
+	WHERE fecha = @fecha)
 GO
 
