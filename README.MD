@@ -84,34 +84,33 @@ Diagrama del Modelo de datos
 Entidades
 (descripción de las tablas)
 
-Base: esta tabla contendrá las direcciones físicas donde espera para la siguiente salida. 
+**Base:** esta tabla contendrá las direcciones físicas donde espera para la siguiente salida. 
 
-Tipo Base: esta tabla contendrá la información si la salida es desde la base o de un hotspot. 
+**Tipo Base:** esta tabla contendrá la información si la salida es desde la base o de un hotspot. 
 
-Horarios: esta tabla contendrá los horarios de salida. 
+**Horarios:** esta tabla contendrá los horarios de salida. 
 
-Combi: esta tabla contendrá información acerca de la combi. 
+**Combi:** esta tabla contendrá información acerca de la combi. 
 
-Localidad: esta tabla contendrá el nombre de todas las localidades. 
+**Localidad:** esta tabla contendrá el nombre de todas las localidades. 
 
-Salidas: esta tabla contendrá información de la salida, la unidad, el horario y fecha. 
+**Salidas:** esta tabla contendrá información de la salida, la unidad, el horario y fecha. 
 
-Unidades: esta tabla contendrá información acerca de los móviles con los que la empresa cuenta. 
+**Unidades:** esta tabla contendrá información acerca de los móviles con los que la empresa cuenta. 
 
-Modelo: esta tabla contendrá información acerca del modelo de las unidades. 
+**Modelo:** esta tabla contendrá información acerca del modelo de las unidades. 
 
-Marca: esta tabla contendrá información acerca la marca de las unidades. 
+**Marca:** esta tabla contendrá información acerca la marca de las unidades. 
 
-Reservas: esta tabla contendrá información acerca de las reservas, tipo de reserva, el usuario, y la salida. 
+**Reservas:** esta tabla contendrá información acerca de las reservas, tipo de reserva, el usuario, y la salida. 
 
-Usuario: esta tabla contendrá información sobre los mismos. 
+**Usuario:** esta tabla contendrá información sobre los mismos. 
 
-Tipo reserva: esta tabla contendrá información acerca del tipo de reserva. 
+**Tipo reserva:** esta tabla contendrá información acerca del tipo de reserva. 
 
-Tipo usuario: esta tabla contendrá información acerca si son usuarios frecuentes o mensuales.
+**Tipo usuario:** esta tabla contendrá información acerca si son usuarios frecuentes o mensuales.
 
-Diccionario de datos
-(descripción de los atributos de cada tabla)
+### Diccionario de datos
 
  ### Base
 | Columna       | Tipo          | Long |Acepta Nulos  |Contenido  |
@@ -219,7 +218,7 @@ Diccionario de datos
 
  
 
-CAPITULO V
+### CAPITULO V
  
 
 DIFICULTADES
@@ -236,7 +235,7 @@ CONCLUSIÓN
 En conclusión no es una experiencia nueva el de colaborar en equipo pero cuando se aprende algo nuevo es un poco más rebuscado el éxito de la finalización del proyecto, ya que, vamos avanzando a prueba de errores. Lo bueno de todo esto es que nos sirve y servirá para nuestro aprendizaje como profesionales. 
 
 BIBLIOGRAFÍA
-https://docs.microsoft.com/es-es/sql/t-sql/statements/create-trigger-transact-sql?view=sql-server-ver15
+>https://docs.microsoft.com/es-es/sql/t-sql/statements/create-trigger-transact-sql?view=sql-server-ver15
 
 (material de lectura/consulta que se utilizó para el desarrollo del trabajo)
 
