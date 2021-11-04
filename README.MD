@@ -14,7 +14,7 @@ Año 2021
     > - Alegre Hernán
     > - Martínez Yamil
     > - Romero Larisa
-    > -Sosa Agustín
+    > - Sosa Agustín
 
 
 ### CAPITULO I
