@@ -10,11 +10,11 @@
 Año 2021
 
 ## YoSubo
-> Integrantes Grupo 13
-    > - Alegre Hernán
-    > - Martínez Yamil
-    > - Romero Larisa
-    > - Sosa Agustín
+ **Integrantes Grupo 13**
+- Alegre Hernán
+- Martínez Yamil
+- Romero Larisa
+- Sosa Agustín
 
 
 ### CAPITULO I
