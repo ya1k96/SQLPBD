@@ -139,3 +139,6 @@ CREATE TABLE usuario(
 );
 ALTER TABLE usuario 
 	ADD CONSTRAINT FK_id_tipo_usuario FOREIGN KEY (idTipoUsuario) REFERENCES tipo_usuario(idtipo_usuario);
+
+  ALTER TABLE reserva
+	ADD	idtiporeserva int not null

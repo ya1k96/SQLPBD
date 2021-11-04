@@ -8,8 +8,8 @@
 - ~~fnObtenerReservasPorFecha~~
 - **fnPagarReserva**
 - **fnCancelarReserva**
-- **fnObtenerHorarioPorHora**
-- **fnObtenerHorarioPorEmpresa**
+- ~~fnObtenerHorarioPorHora~~
+- ~~fnObtenerHorarioPorEmpresa~~
 
 
 ## Vistas
