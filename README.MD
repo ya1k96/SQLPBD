@@ -80,6 +80,7 @@ Youtube
 
 Diagrama del Modelo de datos
 
+<img src='./Diagrama.png'>
 
 Entidades
 (descripción de las tablas)
