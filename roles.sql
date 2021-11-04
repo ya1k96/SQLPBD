@@ -1,17 +1,17 @@
 USE master
 USE yosubo;
 GO
---CREACION DE USUARIOS DE SESION
---EJEMPLO DE USUARIO SIN PERMISOS
+--CREACION DE LOGIN
 CREATE LOGIN agustin with password='12345';
 GO
 CREATE USER Uagustin FOR LOGIN [agustin];
 
---USUARIO CON PERMISOS
+--CREACION DE USUARIO
 CREATE LOGIN yamil with password='12345';
 GO
 CREATE USER Uyamil FOR LOGIN yamil;
 
+--AÑADIMOS ROLES DE SOLO LECTURA Y DENEGAMOS LA ESCRITURA
 ALTER ROLE db_denydatawriter ADD MEMBER Uyamil;
 ALTER ROLE db_datareader ADD MEMBER Uyamil;
 
@@ -20,12 +20,8 @@ ALTER ROLE db_datareader ADD MEMBER Uagustin;
 
 
 --FUNCIONES Y PROCEDIMIENTOS
+--PERMITIMOS UNICAMENTE ASIGNAR RESERVAS DESDE EL PROCEDIMIENTO
 GRANT EXECUTE ON dbo.fnCrearReserva TO Uyamil;
 GRANT EXECUTE ON dbo.fnCrearReserva TO Uagustin;
---USUARIO CON PERMISOS LIMITADOS
-
-
-SELECT * FROM combi;
-DELETE combi WHERE idcombi = 100
-INSERT INTO combi(idcombi,idlocalidad, nombre) VALUES (100,2,'pepe')
-SELECT * FROM tipo_base;
+GRANT SELECT ON dbo.fnReservasPagadas TO Uyamil;
+GRANT EXECUTE ON dbo.fnLugarDisponible TO Uyamil;

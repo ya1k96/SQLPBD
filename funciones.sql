@@ -32,6 +32,7 @@ AS
 			WHERE fecha = @fecha)
 GO
 
+--TRANSACCION DE RESESERVA
 CREATE PROCEDURE fnCrearReserva(
 @idreserva INT, 
 @idsalida INT, 
