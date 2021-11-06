@@ -145,3 +145,6 @@ SELECT * FROM fnObtenerReservasPorFecha('2021-11-02');
 --AGREGAR CAMPO
 ALTER TABLE salida
 	ADD lugares INT DEFAULT 0
+
+CREATE VIEW view_proximas_salidas
+AS SELECT * FROM salida WHERE fecha = CONVERT(varchar, GETDATE(),23)
