@@ -69,11 +69,13 @@ GO
 CREATE PROCEDURE dbo.fnCancelarReserva(@idreserva INT)
 AS
 BEGIN
-SET NOCOUNT ON	             
-    IF () 
+SET NOCOUNT ON	    
+	DECLARE @existe INT, @lastid INT;
+	SET @existe = (SELECT idreserva FROM reserva WHERE idreserva = @idreserva);
+
+    IF (@existe = 1) 
 	  BEGIN
-		  DELETE from reserva where idreserva = @idreserva;
-		PRINT ('Reserva cancelada.')
+		  DELETE FROM reserva where idreserva = @idreserva;		  
 	  END    
 	ELSE
 	BEGIN
@@ -82,17 +84,24 @@ SET NOCOUNT ON
 END
 
 
-CREATE FUNCTION fnPagarReserva(@idreserva INT, @idtipopago INT, @importe INT)
+CREATE PROCEDURE fnPagarReserva(@idreserva INT, @idtipopago INT, @importe DECIMAL)
+AS
 BEGIN
+	SET NOCOUNT ON	
 	DECLARE @existe INT, @lastid INT;
 	SET @existe = (SELECT idreserva FROM reserva WHERE idreserva = @idreserva);
 
-	IF(@existe == 1)
+	IF(@existe = 1)
 		BEGIN
-			INSERT INTO pago(total, fecha) VALUES (GETDATE(), @importe);
+			INSERT INTO pago(fecha, total) VALUES (GETDATE(), @importe);
 			SET @lastid = IDENT_CURRENT('pago');
 			UPDATE reserva 
-			SET pago = @lastid
+			SET idpago = @lastid
 			WHERE idreserva = @idreserva;
 		END
+	ElSE
+		BEGIN
+			PRINT ('El nro de reserva no existe.')
+		END
 END
+
