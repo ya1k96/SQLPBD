@@ -99,14 +99,15 @@ ALTER TABLE unidad
 CREATE TABLE pago(
 	idpago INT IDENTITY PRIMARY KEY,
 	total DECIMAL(19,4),
-	fecha DATE
+	fecha DATE,
+  idtipopago INT,
+  CONSTRAINT FK_id_tipo_pago FOREIGN KEY (idtipopago)
+  REFERENCES tipo_pago(idtipopago)	
 );
 
 CREATE TABLE tipo_pago(
-	idtipopago INT,
-	descripcion VARCHAR(100),
-  CONSTRAINT FK_pago_id FOREIGN KEY (idtipopago)
-  REFERENCES pago(idpago)	
+	idtipopago INT IDENTITY PRIMARY KEY,
+	descripcion VARCHAR(100)
 );
 --
 --
